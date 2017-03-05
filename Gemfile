@@ -8,7 +8,6 @@ end
 gem 'rails', '~> 5.1.0.beta1'
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
-gem 'webpacker', github: "rails/webpacker"
 gem 'jbuilder', '~> 2.5'
 gem 'hamlit', '~> 2.8'
 

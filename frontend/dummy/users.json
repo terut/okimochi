@@ -1,0 +1,22 @@
+[
+  {
+     "id": 1,
+     "screen_name": "terut",
+     "avatar": "https://example.com/abc/abcdef.jpg",
+     "current_article": {
+        "id": 1,
+        "body": "It was difficult day.",
+        "published_at": "2017-03-01T17:00:00Z"
+      }
+   },
+   {
+     "id": 2,
+     "screen_name": "wmoai",
+     "avatar": "https://example.com/def/defghi.jpg",
+     "current_article": {
+        "id": 2,
+        "body": "It was awesom day.",
+        "published_at": "2017-03-01T19:00:00Z"
+      }
+   }
+]

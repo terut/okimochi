@@ -1,0 +1,12 @@
+.user_card {
+  display: inline-block;
+  width: 200px;
+  min-height: 100px;
+  padding: 5px 15px;
+  cursor: pointer;
+  text-decoration: none;
+
+  background-color: whitesmoke;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
