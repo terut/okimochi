@@ -18,3 +18,5 @@
 /frontend/yarn-error.log
 
 .byebug_history
+
+*.swp
