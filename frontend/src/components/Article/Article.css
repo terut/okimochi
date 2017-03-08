@@ -1,0 +1,9 @@
+
+#article_calendar_box {
+  display: -webkit-box;
+  display: -moz-box;
+}
+
+.article_calendar_exists_cell {
+  background-color: aliceblue;
+}

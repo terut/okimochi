@@ -1,18 +1,17 @@
 import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom'
+import { Router, Route, browserHistory } from 'react-router'
 import Dashboard from '../Dashboard/Dashboard.jsx';
 import User from '../User/User.jsx';
+import Editor from '../Editor/Editor.jsx';
 
 let App = () => {
   return (
-    <Router>
-      <div>
-        <Route exact path='/' component={Dashboard}/>
-        <Route exact path='/user/:id' component={User}/>
-      </div>
+    <Router history={browserHistory}>
+      <Route exact path='/' component={Dashboard}/>
+      <Route exact path='/users/:id' component={User}>
+        <Route exact path='date/:date' component={User}/>
+      </Route>
+      <Route exact path='/article' component={Editor}/>
     </Router>
   );
 };

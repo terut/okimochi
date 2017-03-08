@@ -27,7 +27,11 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('bundle.css')
-  ]
+  ],
+  devServer: {
+    contentBase: 'public',
+    historyApiFallback: true
+  }
 
 };
 

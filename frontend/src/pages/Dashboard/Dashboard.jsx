@@ -1,7 +1,7 @@
 import React from 'react';
 import { getUsers } from '../../APIClient.js';
 
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import './Dashboard.css';
 import { connect } from 'react-redux';
 
@@ -17,13 +17,14 @@ class Dashboard extends React.Component {
   render () {
     return (
       <div>
-        {this.props.users.users.map((user, i) => {
+        <div>
+          <Link to='/article'>Edit</Link>
+        </div>
+        {this.props.users.map((user, i) => {
           return (
             <Link
-              to={`/user/${user.id}`}
-              className='user_card'
-              onClick={() => {
-              }}
+              to={`/users/${user.id}`}
+              className='dashboard_user_article'
               key={i}>
               {user.current_article.body}
             </Link>
@@ -36,14 +37,7 @@ class Dashboard extends React.Component {
 
 export default connect(
   state => {
-    return state;
-  // },
-  // dispatch => {
-    // return {
-      // onUserClick: () => {
-        // dispatch({ type: 'user/detail' });
-      // }
-    // };
+    return state.users;
   }
 )(Dashboard);
 

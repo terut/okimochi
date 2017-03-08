@@ -2,7 +2,7 @@
   {
      "id": 1,
      "screen_name": "terut",
-     "avatar": "https://example.com/abc/abcdef.jpg",
+     "avatar": "https://placehold.jp/100x100.png",
      "current_article": {
         "id": 1,
         "body": "It was difficult day.",
@@ -12,7 +12,7 @@
    {
      "id": 2,
      "screen_name": "wmoai",
-     "avatar": "https://example.com/def/defghi.jpg",
+     "avatar": "https://placehold.jp/100x100.png",
      "current_article": {
         "id": 2,
         "body": "It was awesom day.",
