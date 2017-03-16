@@ -10,14 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306030317) do
+ActiveRecord::Schema.define(version: 20170315062350) do
+
+  create_table "invitations", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
+    t.string "email", null: false, collation: "ascii_bin"
+    t.string "token", limit: 50, null: false, collation: "ascii_bin"
+    t.datetime "expires_at", null: false
+    t.datetime "sent_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "idx_email", unique: true
+    t.index ["token"], name: "idx_token", unique: true
+  end
 
   create_table "users", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
     t.string "username", limit: 30, null: false, collation: "ascii_bin"
     t.string "email", null: false, collation: "ascii_bin"
     t.string "name", limit: 100
     t.text "bio"
-    t.string "magic_link_token", limit: 50
+    t.string "magic_link_token", limit: 50, collation: "ascii_bin"
     t.datetime "magic_link_expires_at"
     t.datetime "magic_link_sent_at"
     t.datetime "created_at", null: false

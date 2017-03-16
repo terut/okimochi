@@ -1,3 +1,5 @@
 %p Hello world.
+= link_to "Login", login_path
+= link_to "Logout", logout_path
 - if login?
-  %p= current_user.username
+  %p= "You logged in as #{current_user.username}"

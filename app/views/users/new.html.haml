@@ -1,0 +1,10 @@
+= form_for @user, url: users_path do |f|
+  = hidden_field_tag :invitation_token, @token
+  %div
+    = f.label :email, "Email: "
+    %span= @user.email
+  %div
+    = f.label :username, "Username: "
+    = f.text_field :username
+  %div
+    = f.submit "Create account"
