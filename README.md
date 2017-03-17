@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
 
-Things you may want to cover:
+You can use docker and docker-compose.
 
-* Ruby version
+```sh
+# Build and start docker container
+$ cp docker-compose.example.yml docker-compose.yml
+$ vim docker-compose.yml
 
-* System dependencies
+  MAIL_HOSTNAME=xxxxx
+  MAIL_USERNAME=xxxxx
+  MAIL_PASSWORD=xxxxx
 
-* Configuration
+$ ./bin/build
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Congratulations!
+$ curl "http://localhost:3000"
+```

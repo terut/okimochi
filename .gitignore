@@ -21,3 +21,4 @@
 
 *.swp
 .env
+docker-compose.yml
