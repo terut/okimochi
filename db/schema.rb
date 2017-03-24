@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315062350) do
+ActiveRecord::Schema.define(version: 20170318212246) do
+
+  create_table "articles", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
+    t.bigint "user_id", null: false, unsigned: true
+    t.text "body", null: false
+    t.date "published_on", null: false
+    t.datetime "edited_at", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "published_on"], name: "idx_uid_and_published_on", unique: true
+  end
 
   create_table "invitations", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
     t.string "email", null: false, collation: "ascii_bin"

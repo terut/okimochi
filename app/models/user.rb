@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :articles
+
   validates :email, presence: true, email: true
 
   def authenticate_with_magic_link
