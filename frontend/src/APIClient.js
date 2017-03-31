@@ -29,3 +29,10 @@ export function editArticle(body, date) {
     resolve();
   });
 }
+
+//TODO Put X-CSRF-Token header of request.
+//     Use this logic.(Note that this is exmaple.)
+export function setCSRFToken() {
+  token = document.querySelector("meta[name='csrf-token']").content
+  // TODO set csrf token to X-CSRF-Token header when request method.
+}
