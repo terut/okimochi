@@ -3,7 +3,7 @@ set -ex
 
 # Build image
 docker-compose up -d
-#docker-compose run --rm node yarn install
+docker-compose run --rm node yarn install
 docker-compose run --rm puma bundle install
 docker-compose run --rm puma bundle exec rake db:create db:migrate
 # Run image
