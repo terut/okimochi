@@ -1,25 +1,35 @@
 class UserRepresentation < ApplicationRepresentation
-  property :id
-  property :username
-  property :name
-  property :avatar
-  property :bio
-  property :articles
+  inherited_representation Primitive::UserRepresentation
 
-  delegate(
-    :id,
-    :username,
-    :name,
-    :avatar,
-    :bio,
-    to: :model
+  property(
+    :articles,
+    items: {
+      type: Primitive::ArticleRepresentation
+    },
+    type: Array
+  )
+
+  link(
+    :get_user,
+    description: "Get a single user with the user's articles a month",
+    path: "/users/:id.json",
+    parameters: {
+      date: {
+        example: "2017-03-15",
+        description: "Get user with articles on March, 2017",
+        type: Date,
+      }
+    }
   )
 
   attr_reader :articles
 
   def initialize(user, articles: nil, current_user: nil)
     super(user, current_user: current_user)
-    @articles = articles
-    as_json_options[:except] = [:articles] if articles.nil?
+    if articles.nil?
+      as_json_options[:except] = [:articles]
+    else
+      @articles = articles.map { |a| Primitive::ArticleRepresentation.new(a) }
+    end
   end
 end

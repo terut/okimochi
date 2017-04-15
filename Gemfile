@@ -20,6 +20,7 @@ group :development, :test do
   gem 'capybara', '~> 2.7.0'
   gem 'selenium-webdriver'
   gem 'json_world'
+  gem 'jdoc'
 end
 
 group :development do
