@@ -19,6 +19,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.7'
   gem 'capybara', '~> 2.7.0'
   gem 'selenium-webdriver'
+  gem 'json_world'
 end
 
 group :development do

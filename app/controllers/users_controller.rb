@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  def show
+    user = User.find(params[:id])
+    articles = user.articles.with_month(params[:date])
+    render json: UserRepresentation.new(user, articles: articles)
+  end
+
   def new
     invitation = Invitation.find_with_valid_token(params[:token])
     redirect_to login_path and return if invitation.blank?

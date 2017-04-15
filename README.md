@@ -17,4 +17,7 @@ $ ./bin/build
 
 # Congratulations!
 $ curl "http://localhost:3000"
+
+# Update gems
+$ docker-compose run --rm puma bundle install
 ```

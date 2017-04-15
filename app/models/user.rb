@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def magic_link_resendable?
     self.magic_link_sent_at.blank? || (self.magic_link_sent_at + 15.minutes) < Time.current
   end
+
+  def avatar
+    "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}.jpg?s=200"
+  end
 end

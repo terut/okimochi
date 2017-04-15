@@ -1,4 +1,4 @@
-class Api::ArticlesController < ApplicationController
+class ArticlesController < ApplicationController
   protect_from_forgery except: [:create, :update]
 
   def create

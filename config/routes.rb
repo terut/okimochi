@@ -6,11 +6,7 @@ Rails.application.routes.draw do
   get '/auth/magic/callback', to: 'sessions#validate'
 
   resources :sessions, only: [:create]
-  resources :users, only: [:create]
-
-  namespace :api do
-    resources :boards, only: [:index]
-    resources :users, only: [:show]
-    resources :articles, only: [:create, :update]
-  end
+  resources :users, only: [:create, :show]
+  resources :boards, only: [:index]
+  resources :articles, only: [:create, :update]
 end

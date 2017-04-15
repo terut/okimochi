@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170318212246) do
     t.datetime "edited_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["edited_at"], name: "idx_edited_at"
     t.index ["user_id", "published_on"], name: "idx_uid_and_published_on", unique: true
   end
 

@@ -9,5 +9,6 @@ class CreateArticles < ActiveRecord::Migration[5.1]
     end
 
     add_index :articles, [:user_id, :published_on], name: 'idx_uid_and_published_on', unique: true
+    add_index :articles, [:edited_at], name: 'idx_edited_at'
   end
 end
