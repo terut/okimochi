@@ -10,15 +10,17 @@ class ArticlesController < ApplicationController
       edited_at: current
     }))
     article.save
+    render json: ArticleRepresentation.new(article, current_user)
   end
 
   def update
     article_attrs = article_params.to_h
-    article = Article.find(params[:id])
+    article = current_user.articles.find(params[:id])
     article.attributes = article_attrs.reverse_merge({
       edited_at: Time.current
     })
     article.save
+    render json: ArticleRepresentation.new(article, current_user)
   end
 
   private
