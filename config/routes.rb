@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'boards#index'
+  root 'boards#home'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
