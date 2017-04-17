@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import users from './users.js'
 import user from './user.js'
+import boards from './boards.js';
 
 const reducers = combineReducers({
-  users,
-  user
+  boards,
+  user,
 });
 
 export default reducers;

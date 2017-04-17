@@ -2,15 +2,13 @@ import React from 'react';
 import './Profile.css';
 
 export default function({ user }) {
-    return (
-      <div id='profile_box'>
-        <img src={user.avatar} />
-        <div>
-          <div>{user.screen_name}</div>
-          <div>{user.bio}</div>
-        </div>
-      </div>
-    );
+  return (
+    <section id='profile-container'>
+      <img className='profile-avatar' src={user.avatar} />
+      <h1 className='profile-name'>{user.username}</h1>
+      <p className='profile-bio'>{user.bio}</p>
+    </section>
+  );
 }
 
 

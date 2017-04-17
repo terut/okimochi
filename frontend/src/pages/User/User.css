@@ -1,0 +1,30 @@
+
+#user-container {
+  margin: 0 auto 40px;
+}
+
+@media (max-width: 800px) {
+  #user-container {
+    width: 600px;
+  }
+  #user-aside {
+    margin-bottom: 20px;
+  }
+  #user-profile {
+    float: left;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 800px) {
+  #user-container {
+    width: 800px;
+    display: flex;
+  }
+  #user-main {
+    width: 500px;
+    margin-left: 15px;
+  }
+}
+
+
