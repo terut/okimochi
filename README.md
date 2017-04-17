@@ -17,6 +17,8 @@ $ ./bin/build
 
 # Run webpack --watch
 $ docker-compose run --rm node yarn run dev
+# Run app server
+$ docker-compose run --service-ports --rm puma bundle exec rails s -b 0.0.0.0
 
 # Congratulations!
 $ curl "http://localhost:3000"
@@ -40,4 +42,5 @@ $ docker-compose stop
 
 # Remove container
 $ docker-compose rm
+$ docker-compose rm --all
 ```
