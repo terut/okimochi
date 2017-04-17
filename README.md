@@ -20,4 +20,11 @@ $ curl "http://localhost:3000"
 
 # Update gems
 $ docker-compose run --rm puma bundle install
+
+# Create sample date
+$ docker-compose run --rm puma bundle exec rake db:seed
+
+# Create, Rename file
+$ docker-compose restart puma
+$ docker-compose restart node
 ```
