@@ -10,7 +10,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/node/Dockerfile
-    command: yarn run dev
+    #command: yarn run dev
     volumes:
       - ./frontend/src:/app/src
       - ./frontend/package.json:/app/package.json
@@ -36,6 +36,7 @@ services:
       - ./config:/app/config
       - ./config.ru:/app/config.ru
       - ./db:/app/db
+      - ./doc:/app/doc
       - ./Gemfile:/app/Gemfile
       - ./Gemfile.lock:/app/Gemfile.lock
       - ./lib:/app/lib
