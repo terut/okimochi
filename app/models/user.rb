@@ -13,27 +13,6 @@ class User < ApplicationRecord
     self.update_attributes(self.class.build_attributes)
   end
 
-  def self.build_attributes
-    current = Time.current
-
-    {
-      magic_link_token: self.build_token,
-      magic_link_expires_at: current + 15.minutes,
-      magic_link_sent_at: current
-    }
-  end
-
-  def self.build_token
-		begin
-      token = SecureRandom.hex(20)
-    end while self.exists?(magic_link_token: token)
-    token
-  end
-
-  def magic_link_expired?
-    self.magic_link_expires_at < Time.current
-  end
-
   # Don't resend for 15 minutes
   def magic_link_resendable?
     self.magic_link_sent_at.blank? || (self.magic_link_sent_at + 15.minutes) < Time.current
@@ -42,4 +21,31 @@ class User < ApplicationRecord
   def avatar
     "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}.jpg?s=200"
   end
+
+  private
+
+    def self.build_attributes
+      current = Time.current
+
+      {
+        magic_link_token: self.build_token,
+        magic_link_expires_at: current + 15.minutes,
+        magic_link_sent_at: current
+      }
+    end
+
+    def self.build_token
+      begin
+        token = SecureRandom.hex(20)
+      end while self.exists?(magic_link_token: token)
+      token
+    end
+
+    def magic_link_expired?
+      self.magic_link_expires_at < Time.current
+    end
+
+    def default_name
+      self.name ||= self.username
+    end
 end
