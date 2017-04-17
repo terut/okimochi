@@ -17,8 +17,8 @@ class UsersController < ApplicationController
     invitation = Invitation.find_with_valid_token(params[:invitation_token])
     redirect_to login_path and return if invitation.blank?
 
-    user_attributes = user_params.to_h.reverse_merge({ email: invitation.email })
-    @user = User.new(user_attributes)
+    user_attrs = username_params.to_h.reverse_merge({ email: invitation.email })
+    @user = User.new(user_attrs)
     if @user.save
       login(@user)
       redirect_to root_path
@@ -28,8 +28,27 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-  def user_params
-    params.require(:user).permit(:username)
+  def edit
+    @user = User.find(current_user.id)
   end
+
+  def update
+    @user = User.find(current_user.id)
+    user_attrs = user_params
+    if @user.update_attributes(user_attrs)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  private
+
+    def username_params
+      params.require(:user).permit(:username)
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :bio)
+    end
 end

@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   validates :email, presence: true, email: true
 
+  before_create :default_name
+
   def authenticate_with_magic_link
     !magic_link_expired? && self
   end

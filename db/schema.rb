@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170318212246) do
   create_table "users", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
     t.string "username", limit: 30, null: false, collation: "ascii_bin"
     t.string "email", null: false, collation: "ascii_bin"
-    t.string "name", limit: 100
+    t.string "name", limit: 100, null: false
     t.text "bio"
     t.string "magic_link_token", limit: 50, collation: "ascii_bin"
     t.datetime "magic_link_expires_at"
