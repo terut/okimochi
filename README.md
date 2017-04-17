@@ -15,16 +15,29 @@ $ vim docker-compose.yml
 
 $ ./bin/build
 
+# Run webpack --watch
+$ docker-compose run --rm node yarn run dev
+
 # Congratulations!
 $ curl "http://localhost:3000"
 
 # Update gems
 $ docker-compose run --rm puma bundle install
 
+# Clean up database
+$ docker-compose run --rm puma bundle exec rake db:migrate:reset
+
 # Create sample date
 $ docker-compose run --rm puma bundle exec rake db:seed
 
-# Create, Rename file
+# Create and rename file
 $ docker-compose restart puma
 $ docker-compose restart node
+
+# Start and stop all container
+$ docker-compose start
+$ docker-compose stop
+
+# Remove container
+$ docker-compose rm
 ```
