@@ -6,6 +6,7 @@ class SchemaRepresentation
   title "Private API endpoint"
   description "Use json schema"
 
+  property :boards, links: true, type: BoardRepresentation
   property :articles, links: true, type: ArticleRepresentation
   property :users, links: true, type: UserRepresentation
 end
