@@ -8,13 +8,6 @@ class ArticleRepresentation < ApplicationRepresentation
   )
 
   link(
-    :list_articles,
-    description: "List articles",
-    path: "/boards.json",
-    rel: "instances"
-  )
-
-  link(
     :create_article,
     description: "Create article",
     path: "/articles.json",

@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
   end
 
   def index
-    articles = Article.includes(:user).order(edited_at: :desc).limit(20)
-    render json: articles.map { |a| ArticleRepresentation.new(a, user: a.user) }
+    users = User.find_current
+    render json: users.map { |u| BoardRepresentation.new(u) }
   end
 end

@@ -5,6 +5,13 @@ class User < ApplicationRecord
 
   before_create :default_name
 
+  # TODO we should consider table schema if boards will be good
+  def self.find_current
+    users = User.limit(20)
+    users = users.select { |u| !u.current_article.nil? }
+    users.sort { |u1, u2| u2.current_article.published_on <=> u1.current_article.published_on }
+  end
+
   def authenticate_with_magic_link
     !magic_link_expired? && self
   end
@@ -20,6 +27,11 @@ class User < ApplicationRecord
 
   def avatar
     "https://www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}.jpg?s=200"
+  end
+
+  # TODO N+1 query
+  def current_article
+    @current_article ||= self.articles.order(published_on: :desc).last
   end
 
   private
