@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # json ---
   def show
     user = User.find(params[:id])
-    articles = user.articles.with_month(params[:date])
+    articles = user.articles.with_month(params[:month])
     render json: UserRepresentation.new(user, articles: articles)
   end
 

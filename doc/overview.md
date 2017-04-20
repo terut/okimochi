@@ -191,12 +191,12 @@ Content-Type: application/json
 ### GET /users/:id
 Get a single user with the user's articles a month
 
-* date
+* month
  * Get user with articles on March, 2017
- * Example: `"2017-03-15"`
+ * Example: `"2017-03"`
 
 ```
-GET /users/:id?date=2017-03-15 HTTP/1.1
+GET /users/:id?month=2017-03 HTTP/1.1
 Host: api.example.com
 ```
 

@@ -14,8 +14,8 @@ class UserRepresentation < ApplicationRepresentation
     description: "Get a single user with the user's articles a month",
     path: "/users/:id",
     parameters: {
-      date: {
-        example: "2017-03-15",
+      month: {
+        example: "2017-03",
         description: "Get user with articles on March, 2017",
         type: Date,
       }
