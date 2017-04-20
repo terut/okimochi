@@ -12,7 +12,7 @@ class UserRepresentation < ApplicationRepresentation
   link(
     :get_user,
     description: "Get a single user with the user's articles a month",
-    path: "/users/:id.json",
+    path: "/users/:id",
     parameters: {
       date: {
         example: "2017-03-15",

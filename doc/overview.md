@@ -2,12 +2,13 @@
 Use json schema
 
 * [Articles](#articles)
- * [POST /articles.json](#post-articles.json)
- * [PATCH /articles/:id.json](#patch-articlesid.json)
+ * [POST /articles](#post-articles)
+ * [PATCH /articles/:id](#patch-articlesid)
+ * [GET /article](#get-article)
 * [Boards](#boards)
- * [GET /boards.json](#get-boards.json)
+ * [GET /boards](#get-boards)
 * [Users](#users)
- * [GET /users/:id.json](#get-usersid.json)
+ * [GET /users/:id](#get-usersid)
 
 ## Articles
 
@@ -30,11 +31,11 @@ Use json schema
 * user
  * Return user
 
-### POST /articles.json
+### POST /articles
 Create article
 
 ```
-POST /articles.json HTTP/1.1
+POST /articles HTTP/1.1
 Host: api.example.com
 ```
 
@@ -57,11 +58,38 @@ Content-Type: application/json
 }
 ```
 
-### PATCH /articles/:id.json
+### PATCH /articles/:id
 Update article
 
 ```
-PATCH /articles/:id.json HTTP/1.1
+PATCH /articles/:id HTTP/1.1
+Host: api.example.com
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "body": "Today, I defeated my opponent.",
+  "published_on": "2017-03-01",
+  "edited_at": "2017-03-01T18:00:00Z",
+  "user": {
+    "id": 1,
+    "username": "kirito",
+    "name": "Kirito",
+    "avatar": "https://www.gravatar.com/avatar/2fca43655bea294ead4418b60ffbc7a0.jpg?s=200",
+    "bio": "I'm Beater."
+  }
+}
+```
+
+### GET /article
+Today's article. Return `204 No Content` if authenticated user haven't write today's article yet.
+
+```
+GET /article HTTP/1.1
 Host: api.example.com
 ```
 
@@ -107,11 +135,11 @@ Content-Type: application/json
  * Type: null, string
 * current_article
 
-### GET /boards.json
+### GET /boards
 List users with current article
 
 ```
-GET /boards.json HTTP/1.1
+GET /boards HTTP/1.1
 Host: api.example.com
 ```
 
@@ -160,7 +188,7 @@ Content-Type: application/json
 * articles
  * Type: array
 
-### GET /users/:id.json
+### GET /users/:id
 Get a single user with the user's articles a month
 
 * date
@@ -168,7 +196,7 @@ Get a single user with the user's articles a month
  * Example: `"2017-03-15"`
 
 ```
-GET /users/:id.json?date=2017-03-15 HTTP/1.1
+GET /users/:id?date=2017-03-15 HTTP/1.1
 Host: api.example.com
 ```
 

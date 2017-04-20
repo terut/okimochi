@@ -9,7 +9,7 @@ class BoardRepresentation < ApplicationRepresentation
   link(
     :list_articles,
     description: "List users with current article",
-    path: "/boards.json",
+    path: "/boards",
     rel: "instances"
   )
 

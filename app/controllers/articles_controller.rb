@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
       edited_at: current
     }))
     article.save
-    render json: ArticleRepresentation.new(article)
+    render json: ArticleRepresentation.new(article, user: current_user)
   end
 
   def update
@@ -20,14 +20,14 @@ class ArticlesController < ApplicationController
       edited_at: Time.current
     })
     article.save
-    render json: ArticleRepresentation.new(article)
+    render json: ArticleRepresentation.new(article, user: current_user)
   end
 
   def today
     current = Time.current
     published_on = current.in_time_zone('UTC').to_date
     if article = current_user.articles.find_by_published_on(published_on)
-      render json: ArticleRepresentation.new(article)
+      render json: ArticleRepresentation.new(article, user: current_user)
     else
       head :no_content
     end

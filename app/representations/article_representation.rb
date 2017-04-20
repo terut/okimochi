@@ -10,15 +10,21 @@ class ArticleRepresentation < ApplicationRepresentation
   link(
     :create_article,
     description: "Create article",
-    path: "/articles.json",
+    path: "/articles",
     method: "POST"
   )
 
   link(
     :update_article,
     description: "Update article",
-    path: "/articles/:id.json",
+    path: "/articles/:id",
     method: "PATCH"
+  )
+
+  link(
+    :current_article,
+    description: "Today's article. Return `204 No Content` if authenticated user haven't write today's article yet.",
+    path: "/article"
   )
 
   attr_reader :user
