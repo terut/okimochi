@@ -6,6 +6,10 @@ class UsersController < ApplicationController
     render json: UserRepresentation.new(user, articles: articles)
   end
 
+  def current
+    render json: AuthenticatedUserRepresentation.new(current_user)
+  end
+
   # html ---
   def new
     invitation = Invitation.find_with_valid_token(params[:token])

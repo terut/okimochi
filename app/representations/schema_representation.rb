@@ -9,4 +9,5 @@ class SchemaRepresentation
   property :boards, links: true, type: BoardRepresentation
   property :articles, links: true, type: ArticleRepresentation
   property :users, links: true, type: UserRepresentation
+  property :authenticated_user, links: true, type: AuthenticatedUserRepresentation
 end

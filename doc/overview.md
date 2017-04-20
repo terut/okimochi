@@ -5,6 +5,8 @@ Use json schema
  * [POST /articles](#post-articles)
  * [PATCH /articles/:id](#patch-articlesid)
  * [GET /article](#get-article)
+* [AuthenticatedUser](#authenticateduser)
+ * [GET /user](#get-user)
 * [Boards](#boards)
  * [GET /boards](#get-boards)
 * [Users](#users)
@@ -109,6 +111,49 @@ Content-Type: application/json
     "avatar": "https://www.gravatar.com/avatar/2fca43655bea294ead4418b60ffbc7a0.jpg?s=200",
     "bio": "I'm Beater."
   }
+}
+```
+
+## AuthenticatedUser
+
+
+### Properties
+* id
+ * id
+ * Example: `1`
+ * Type: integer
+* username
+ * Example: `"kirito"`
+ * Type: string
+ * Pattern: `/^\w{5}$/`
+* name
+ * Example: `"Kirito"`
+ * Type: string
+* avatar
+ * Example: `"https://www.gravatar.com/avatar/2fca43655bea294ead4418b60ffbc7a0.jpg?s=200"`
+ * Type: string
+* bio
+ * Example: `"I'm Beater."`
+ * Type: null, string
+
+### GET /user
+Get authenticated user
+
+```
+GET /user HTTP/1.1
+Host: api.example.com
+```
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "kirito",
+  "name": "Kirito",
+  "avatar": "https://www.gravatar.com/avatar/2fca43655bea294ead4418b60ffbc7a0.jpg?s=200",
+  "bio": "I'm Beater."
 }
 ```
 
