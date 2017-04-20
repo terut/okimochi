@@ -6,4 +6,7 @@
     = f.label :bio, "Bio: "
     = f.text_area :bio
   %div
+    = f.label :time_zone, "Time Zone: "
+    = f.time_zone_select(:time_zone, ActiveSupport::TimeZone.all.sort)
+  %div
     = f.submit "Update profile"

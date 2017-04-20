@@ -7,4 +7,7 @@
     = f.label :username, "Username: "
     = f.text_field :username
   %div
+    = f.label :time_zone, "Time Zone: "
+    = f.time_zone_select(:time_zone, ActiveSupport::TimeZone.all.sort)
+  %div
     = f.submit "Create account"

@@ -10,6 +10,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.7'
 gem 'jbuilder', '~> 2.5'
 gem 'hamlit', '~> 2.8'
+gem 'json_world'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -19,7 +20,6 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.7'
   gem 'capybara', '~> 2.7.0'
   gem 'selenium-webdriver'
-  gem 'json_world'
   gem 'jdoc'
 end
 
