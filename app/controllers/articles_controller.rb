@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
       edited_at: current
     }))
     article.save
-    render json: ArticleRepresentation.new(article, current_user)
+    render json: ArticleRepresentation.new(article)
   end
 
   def update
@@ -20,11 +20,22 @@ class ArticlesController < ApplicationController
       edited_at: Time.current
     })
     article.save
-    render json: ArticleRepresentation.new(article, current_user)
+    render json: ArticleRepresentation.new(article)
+  end
+
+  def today
+    current = Time.current
+    published_on = current.in_time_zone('UTC').to_date
+    if article = current_user.articles.find_by_published_on(published_on)
+      render json: ArticleRepresentation.new(article)
+    else
+      head :no_content
+    end
   end
 
   private
-  def article_params
-    params.require(:article).permit(:body)
-  end
+
+    def article_params
+      params.require(:article).permit(:body)
+    end
 end

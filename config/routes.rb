@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/auth/magic/callback', to: 'sessions#validate'
   get '/settings', to: 'users#edit'
   patch '/settings', to: 'users#update'
+  get '/article', to: 'articles#today'
 
   resources :sessions, only: [:create]
   resources :users, only: [:show, :create]
