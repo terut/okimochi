@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
   def login(user)
@@ -20,5 +20,9 @@ class ApplicationController < ActionController::Base
     return if login?
 
     redirect_to root_path
+  end
+
+  def time_zone
+    @time_zone ||= (current_user&.time_zone || Time.zone.name)
   end
 end
