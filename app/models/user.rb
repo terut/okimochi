@@ -31,7 +31,7 @@ class User < ApplicationRecord
 
   # TODO N+1 query
   def current_article
-    @current_article ||= self.articles.order(published_on: :desc).last
+    @current_article ||= self.articles.order(:published_on).last
   end
 
   private

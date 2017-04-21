@@ -32,17 +32,28 @@ if Rails.env.development?
     ]
   ) unless User.exists?(username: 'kirito')
 
-  u = User.find(1)
-  u.articles.create([
-    {
-      body: "I'm beater.",
-      published_on: "2017-03-02",
-      edited_at: "2017-03-02T18:00:00Z"
-    },
-    {
-      body: "Beater, huh? Sounds good to me.",
-      published_on: "2017-03-03",
-      edited_at: "2017-03-03T18:00:00Z"
-    }
-  ]) unless Article.exists?
+  unless Article.exists?
+    u = User.find(1)
+    u.articles.create([
+      {
+        body: "I'm beater.",
+        published_on: "2017-03-02",
+        edited_at: "2017-03-02T18:00:00Z"
+      },
+      {
+        body: "Beater, huh? Sounds good to me.",
+        published_on: "2017-03-03",
+        edited_at: "2017-03-03T18:00:00Z"
+      },
+
+    ])
+    u = User.find(2)
+    u.articles.create([
+      {
+        body: "Help...Kirito..",
+        published_on: "2017-03-04",
+        edited_at: "2017-03-04T18:00:00Z"
+      }
+    ])
+  end
 end
