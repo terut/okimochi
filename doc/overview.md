@@ -135,6 +135,10 @@ Content-Type: application/json
 * bio
  * Example: `"I'm Beater."`
  * Type: null, string
+* time_zone
+ * time zone
+ * Example: `"Asia/Tokyo"`
+ * Type: string
 
 ### GET /user
 Get authenticated user
@@ -153,7 +157,8 @@ Content-Type: application/json
   "username": "kirito",
   "name": "Kirito",
   "avatar": "https://www.gravatar.com/avatar/2fca43655bea294ead4418b60ffbc7a0.jpg?s=200",
-  "bio": "I'm Beater."
+  "bio": "I'm Beater.",
+  "time_zone": "Asia/Tokyo"
 }
 ```
 
