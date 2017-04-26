@@ -5,10 +5,10 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email, null: false, charset: 'ascii', collation: 'ascii_bin'
       t.string :name, limit: 100, null: false
       t.text :bio
+      t.string :time_zone, limit: 30, default: 'UTC', null: false
       t.string :magic_link_token, limit: 50, charset: 'ascii', collation: 'ascii_bin'
       t.datetime :magic_link_expires_at
       t.datetime :magic_link_sent_at
-      t.string :time_zone, limit: 30, default: 'UTC', null: false
       t.timestamps
     end
 
