@@ -1,7 +1,11 @@
 class User < ApplicationRecord
   has_many :articles
 
-  validates :email, presence: true, email: true
+  #validates :username, presence: true, format: { with: /\A[a-zA-Z0-9_\-]+\z/ }, length: { in: 3..20 }, uniqueness: true
+  validates :email, presence: true, email: true, uniqueness: true
+  #validates :name, presence: true, length: { in: 3..20 }, allow_nil: true
+  #validates :bio, presence: true, length: { maximum: 200 }, allow_nil: true
+  #validates :time_zone, presence: true, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
 
   before_create :default_name
 

@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "User" do
+    user = build(:user, username: "")
+    assert user.invalid?
+    user.username = nil
+    assert user.invalid?
+  end
 end

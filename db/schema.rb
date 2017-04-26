@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20170318212246) do
     t.string "email", null: false, collation: "ascii_bin"
     t.string "name", limit: 100, null: false
     t.text "bio"
+    t.string "time_zone", limit: 30, default: "UTC", null: false
     t.string "magic_link_token", limit: 50, collation: "ascii_bin"
     t.datetime "magic_link_expires_at"
     t.datetime "magic_link_sent_at"
-    t.string "time_zone", limit: 30, default: "UTC", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "idx_email", unique: true
