@@ -36,11 +36,12 @@ services:
       - ./config:/app/config
       - ./config.ru:/app/config.ru
       - ./db:/app/db
+      - ./lib:/app/lib
+      - ./public:/app/public
+      - ./test:/app/test
       - ./doc:/app/doc
       - ./Gemfile:/app/Gemfile
       - ./Gemfile.lock:/app/Gemfile.lock
-      - ./lib:/app/lib
-      - ./public:/app/public
       - ./Rakefile:/app/Rakefile
       - bundle:/bundle
     depends_on:
