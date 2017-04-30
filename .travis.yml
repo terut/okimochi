@@ -1,0 +1,8 @@
+sudo: false
+language: ruby
+rvm:
+  - 2.4.0
+before_install:
+  - mysql -e 'create database okimochi_test;'
+  - echo "USE mysql;\nUPDATE user SET password=PASSWORD('root') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
+  - gem install bundler -v 1.14.6
