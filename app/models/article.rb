@@ -1,9 +1,8 @@
 class Article < ApplicationRecord
-  include Normalize
-
   belongs_to :user
 
-  nullify :body
+  validates :body, presence: true
+  validates :published_on, uniqueness: { scope: :user }
 
   # month: "2017-03"
   def self.with_month(month, time_zone: Time.zone.name)
