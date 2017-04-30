@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include Normalize
+
   has_many :articles
 
   #validates :username, presence: true, format: { with: /\A[a-zA-Z0-9_\-]+\z/ }, length: { in: 3..20 }, uniqueness: true
@@ -8,6 +10,8 @@ class User < ApplicationRecord
   #validates :time_zone, presence: true, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.name } }
 
   before_create :default_name
+
+  nullify :name, :bio
 
   # TODO we should consider table schema if boards will be good
   def self.find_current

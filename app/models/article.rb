@@ -1,5 +1,9 @@
 class Article < ApplicationRecord
+  include Normalize
+
   belongs_to :user
+
+  nullify :body
 
   # month: "2017-03"
   def self.with_month(month, time_zone: Time.zone.name)
