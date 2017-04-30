@@ -21,29 +21,31 @@ class Invitation < ApplicationRecord
     invitation
   end
 
-  def self.build_attributes
-    current = Time.current
+  private
 
-    {
-      token: self.build_token,
-      expires_at: current + 3.days,
-      sent_at: current
-    }
-  end
+    def self.build_attributes
+      current = Time.current
 
-  def self.build_token
-		begin
-      token = SecureRandom.hex(20)
-    end while self.exists?(token: token)
-    token
-  end
+      {
+        token: self.build_token,
+        expires_at: current + 3.days,
+        sent_at: current
+      }
+    end
 
-  def expired?
-    self.expires_at < Time.current
-  end
+    def self.build_token
+      begin
+        token = SecureRandom.hex(20)
+      end while self.exists?(token: token)
+      token
+    end
 
-  # Don't resend for 15 minutes
-  def resendable?
-    (self.sent_at + 15.minutes) < Time.current
-  end
+    def expired?
+      self.expires_at < Time.current
+    end
+
+    # Don't resend for 15 minutes
+    def resendable?
+      (self.sent_at + 15.minutes) < Time.current
+    end
 end
