@@ -53,6 +53,7 @@ GEM
     childprocess (0.6.2)
       ffi (~> 1.0, >= 1.0.11)
     concurrent-ruby (1.0.5)
+    database_rewinder (0.8.1)
     debug_inspector (0.0.2)
     erubi (1.6.0)
     erubis (2.7.0)
@@ -180,6 +181,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara (~> 2.7.0)
+  database_rewinder (~> 0.8.0)
   factory_girl_rails (~> 4.7)
   hamlit (~> 2.8)
   hamlit-rails (~> 0.1.0)

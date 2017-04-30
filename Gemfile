@@ -18,6 +18,7 @@ gem 'json_world'
 group :development, :test do
   gem 'byebug', platforms: [:mri]
   gem 'factory_girl_rails', '~> 4.7'
+  gem 'database_rewinder', '~> 0.8.0'
   gem 'capybara', '~> 2.7.0'
   gem 'selenium-webdriver'
   gem 'jdoc'
