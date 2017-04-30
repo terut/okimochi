@@ -1,4 +1,4 @@
-# README
+# README [![Build Status](https://travis-ci.org/terut/okimochi.svg?branch=master)](https://travis-ci.org/terut/okimochi)
 
 ## Development
 
