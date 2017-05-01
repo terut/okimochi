@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/terut/kagishi.git
+  revision: e77f03ffe21d851818cb3b071be96e373295ae26
+  specs:
+    kagishi (0.0.1)
+      jwt (~> 1.5, >= 1.5.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -87,6 +94,7 @@ GEM
     json_schema (0.16.1)
     json_world (0.2.5)
       activesupport
+    jwt (1.5.6)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -188,6 +196,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jdoc
   json_world
+  kagishi!
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
   puma (~> 3.7)

@@ -9,8 +9,6 @@ FactoryGirl.define do
     name "kirito"
     bio "I'm a Beater."
     time_zone "UTC"
-    magic_link_token nil
-    magic_link_expires_at nil
     magic_link_sent_at nil
 
     factory :user_with_article do

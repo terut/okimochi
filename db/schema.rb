@@ -25,13 +25,10 @@ ActiveRecord::Schema.define(version: 20170318212246) do
 
   create_table "invitations", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
     t.string "email", null: false, collation: "ascii_bin"
-    t.string "token", limit: 50, null: false, collation: "ascii_bin"
-    t.datetime "expires_at", null: false
     t.datetime "sent_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "idx_email", unique: true
-    t.index ["token"], name: "idx_token", unique: true
   end
 
   create_table "users", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC" do |t|
@@ -40,13 +37,10 @@ ActiveRecord::Schema.define(version: 20170318212246) do
     t.string "name", limit: 100
     t.text "bio"
     t.string "time_zone", limit: 30, default: "UTC", null: false
-    t.string "magic_link_token", limit: 50, collation: "ascii_bin"
-    t.datetime "magic_link_expires_at"
     t.datetime "magic_link_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "idx_email", unique: true
-    t.index ["magic_link_token"], name: "idx_magic_link_token", unique: true
     t.index ["username"], name: "idx_username", unique: true
   end
 

@@ -11,6 +11,7 @@ gem 'puma', '~> 3.7'
 gem 'jbuilder', '~> 2.5'
 gem 'hamlit', '~> 2.8'
 gem 'json_world'
+gem 'kagishi', git: "https://github.com/terut/kagishi.git"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
