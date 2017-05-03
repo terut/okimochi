@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  def time_zone
-    @time_zone ||= (current_user&.time_zone || Time.zone.name)
+  def preferred_time_zone
+    @preferred_time_zone ||= (current_user&.time_zone || Time.zone.name)
   end
 end

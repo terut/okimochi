@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   def create
     article_attrs = article_params.to_h
     current = Time.current
-    published_on = current.in_time_zone(time_zone).to_date
+    published_on = current.in_time_zone(preferred_time_zone).to_date
     article = current_user.articles.build(article_attrs.reverse_merge({
       published_on: published_on,
       edited_at: current
@@ -25,7 +25,7 @@ class ArticlesController < ApplicationController
 
   def today
     current = Time.current
-    published_on = current.in_time_zone(time_zone).to_date
+    published_on = current.in_time_zone(preferred_time_zone).to_date
     if article = current_user.articles.find_by(published_on: published_on)
       render json: ArticleRepresentation.new(article, user: current_user)
     else
