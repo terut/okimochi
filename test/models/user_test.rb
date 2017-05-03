@@ -105,13 +105,6 @@ class UserTest < ActiveSupport::TestCase
     assert user.invalid?
   end
 
-  test "#authenticate_with_magic_link should return self when magic link doesn't expire" do
-    user = create(:user, magic_link_expires_at: Time.current + 15.minutes)
-    assert_same user, user.authenticate_with_magic_link
-    user.update_attributes(magic_link_expires_at: Time.current - 10)
-    assert_not user.authenticate_with_magic_link
-  end
-
   test ".find_current should return users ordered by current article's published_on" do
     users = [
       create(:user_with_article, published_on: "2017-03-03"),

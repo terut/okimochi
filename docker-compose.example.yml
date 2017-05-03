@@ -28,6 +28,7 @@ services:
       MAIL_HOSTNAME: [smtp server]
       MAIL_USERNAME: [username]
       MAIL_PASSWORD: [password]
+      KAGISHI_SECRET: my$$ecretK3y
     ports:
       - "3000:3000"
     volumes:

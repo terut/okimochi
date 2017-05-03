@@ -1,22 +1,21 @@
 class SessionsController < ApplicationController
+  include Kagishi
+
   def create
     email = email_params
-    if user = User.find_by_email(email)
-      if user.magic_link_resendable?
-        user.update_magic_link
-        UserMailer.magic_link(user).deliver_later
-      end
-    else
-      invitation = Invitation.create_with_token(email)
-      UserMailer.invitation(invitation).deliver_later if invitation.present?
+    user = User.find_by(email: email)
+    if user&.magic_link_resendable?
+      user.update_attributes(magic_link_sent_at: Time.current)
+      UserMailer.magic_link(user, issue_token(user.email)).deliver_later
+    elsif user.nil? && invitation = Invitation.create_with_email(email)
+      UserMailer.invitation(invitation, issue_token(invitation.email)).deliver_later
     end
 
     redirect_to login_path
   end
 
-  def validate
-    user = User.find_by_magic_link_token(params[:token])
-    if user && user.authenticate_with_magic_link
+  def auth
+    if user = User.find_by(email: verify_token(params[:token])&.email)
       login(user)
     end
 

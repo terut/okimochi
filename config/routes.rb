@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
-  get '/auth/magic/callback', to: 'sessions#validate'
+  get '/auth/magic/callback', to: 'sessions#auth'
   get '/settings', to: 'users#edit'
   patch '/settings', to: 'users#update'
   get '/user', to: 'users#current'
