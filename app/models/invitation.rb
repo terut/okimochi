@@ -1,5 +1,5 @@
 class Invitation < ApplicationRecord
-  validates :email, presence: true, email: true
+  validates :email, presence: true, email: true, uniqueness: true
 
   def self.create_with_email(email)
     attrs = { sent_at: Time.current }
