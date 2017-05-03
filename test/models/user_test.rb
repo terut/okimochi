@@ -35,12 +35,14 @@ class UserTest < ActiveSupport::TestCase
     create(:user, username: "abc")
     user = build(:user, username: "abc")
     assert user.invalid?
+    assert_raises(ActiveRecord::RecordNotUnique) { user.save!(validate: false) }
   end
 
   test "email should be unique" do
     create(:user, email: "abc@example.com")
     user = build(:user, email: "abc@example.com")
     assert user.invalid?
+    assert_raises(ActiveRecord::RecordNotUnique) { user.save!(validate: false) }
   end
 
   test "email should be a specific format" do
