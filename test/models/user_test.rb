@@ -73,6 +73,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal name, user.name
   end
 
+  # testing normalize
   test "name should not be blank and be nullified when it's present record" do
     user = create(:user)
     user.update_attributes(name: "")
@@ -81,6 +82,7 @@ class UserTest < ActiveSupport::TestCase
     assert_nil user.name
   end
 
+  # testing normalize
   test "bio should not be blank and be nullified" do
     user = create(:user, bio: "")
     assert_nil user.bio
