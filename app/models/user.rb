@@ -2,7 +2,7 @@ class User < ApplicationRecord
   include Normalize
   include Kagishi
 
-  has_many :articles
+  has_many :articles, inverse_of: :user
 
   validates :username, presence: true, format: { with: /\A[a-zA-Z0-9_\-]+\z/ }, length: { in: 3..20 }, uniqueness: true
   validates :email, presence: true, email: true, uniqueness: true
