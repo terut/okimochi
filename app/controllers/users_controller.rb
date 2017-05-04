@@ -25,8 +25,7 @@ class UsersController < ApplicationController
     payload = payload(params[:invitation_token])
     redirect_to login_path and return if payload.blank?
 
-    user_attrs = username_params.to_h.reverse_merge({ email: payload.email })
-    @user = User.new(user_attrs)
+    @user = User.new(username_params.merge({ email: payload.email }))
     if @user.save
       login(@user)
       redirect_to root_path
@@ -42,8 +41,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(current_user.id)
-    user_attrs = user_params
-    if @user.update_attributes(user_attrs)
+    if @user.update_attributes(user_params)
       redirect_to root_path
     else
       render :edit
