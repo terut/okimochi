@@ -18,7 +18,8 @@ $ ./bin/build
 # Run webpack --watch
 $ docker-compose run --rm node yarn run dev
 # Run app server
-$ docker-compose run --service-ports --rm puma bundle exec rails s -b 0.0.0.0
+# You need to specify port temporary. ref: https://github.com/puma/puma/pull/1277#event-1064193856
+$ docker-compose run --service-ports --rm puma bundle exec rails s -b 0.0.0.0 -p 3000
 
 # Congratulations!
 $ curl "http://localhost:3000"
