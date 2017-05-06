@@ -6,9 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: email)
     if user&.magic_link_resendable?
       user.update_attributes(magic_link_sent_at: Time.current)
-      UserMailer.magic_link(user, issue_token(user.email)).deliver_later
+      UserMailer.with(user: user, token: issue_token(user.email)).magic_link.deliver_later
     elsif user.nil? && invitation = Invitation.create_with_email(email)
-      UserMailer.invitation(invitation, issue_token(invitation.email)).deliver_later
+      UserMailer.with(invitation: invitation, token: issue_token(invitation.email)).invitation.deliver_later
     end
 
     redirect_to login_path
