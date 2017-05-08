@@ -22,6 +22,7 @@ group :development, :test do
   gem 'database_rewinder', '~> 0.8.0'
   gem 'capybara', '~> 2.7.0'
   gem 'selenium-webdriver'
+  gem 'json-schema'
   gem 'jdoc'
 end
 
