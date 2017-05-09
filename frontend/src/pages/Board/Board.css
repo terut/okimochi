@@ -1,0 +1,34 @@
+#board-container {
+  margin: 0 auto 30px;
+}
+@media (min-width: 768px) {
+  #board-container {
+    width: 750px;
+  }
+}
+@media (min-width: 1000px) {
+  #board-container {
+    width: 1000px;
+  }
+}
+
+#board {
+  padding: 10px 20px;
+}
+
+#board:after{
+  content: "."; 
+  display: block; 
+  height: 0; 
+  font-size:0;	
+  clear: both; 
+  visibility:hidden;
+}
+
+.board_block {
+  float: left;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  margin: 8px;
+}

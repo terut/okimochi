@@ -1,38 +1,66 @@
 
+import moment from 'moment';
+import request from 'superagent';
 
-export function getUsers() {
+const protocol = window.location.protocol;
+const host = window.location.host
+
+export function getBoards() {
   return new Promise((resolve, reject) => {
-    resolve(require('../dummy/users.json'));
+    request.get('/boards')
+      .set('accept', 'application/json')
+      .end((err, res) => resolve(res.body));
   });
 }
 
-export function getUser(id, date) {
+export function getUserMonthly(id, date) {
+  const dateQuery = date ? `month=${date.format('YYYY-MM')}` : '';
   return new Promise((resolve, reject) => {
-    resolve(require('../dummy/user.json'));
+    request.get(`/users/${id}?${dateQuery}`)
+      .set('accept', 'application/json')
+      .end((err, res) => resolve(res.body));
   });
 }
 
-export function getTodayArticle() {
+export function getCurrentArticle() {
   return new Promise((resolve, reject) => {
-    resolve(require('../dummy/article.json'));
+    request.get(`/article`)
+      .set('accept', 'application/json')
+      .end((err, res) => {
+        console.log(res.statusCode);
+        resolve(res.body);
+      });
   });
 }
 
-export function postArticle(body, date) {
+export function postArticle(body) {
   return new Promise((resolve, reject) => {
-    resolve();
+    request.post('/articles')
+      .set('accept', 'application/json')
+      .send({
+        article: {
+          body: body
+        }
+      })
+      .set('X-CSRF-Token', getCSRFToken())
+      .end((err, res) => resolve(res.body));
   });
 }
 
-export function editArticle(body, date) {
+export function patchArticle(id, body, date) {
   return new Promise((resolve, reject) => {
-    resolve();
+    request.patch(`/articles/${id}`)
+      .set('accept', 'application/json')
+      .send({
+        article: {
+          body: body
+        }
+      })
+      .set('X-CSRF-Token', getCSRFToken())
+      .end((err, res) => resolve(res.body));
   });
 }
 
-//TODO Put X-CSRF-Token header of request.
-//     Use this logic.(Note that this is exmaple.)
-export function setCSRFToken() {
-  token = document.querySelector("meta[name='csrf-token']").content
-  // TODO set csrf token to X-CSRF-Token header when request method.
+function getCSRFToken() {
+  return document.querySelector("meta[name='csrf-token']").content
 }

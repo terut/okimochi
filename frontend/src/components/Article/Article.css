@@ -1,9 +1,64 @@
-
-#article_calendar_box {
-  display: -webkit-box;
-  display: -moz-box;
+.article {
+  position: relative;
+  border-bottom: 2px solid silver;
+  box-sizing: border-box;
+}
+.article-sticky {
+  width: 220px!important;
 }
 
-.article_calendar_exists_cell {
-  background-color: aliceblue;
+.article-mount {
+  background-color: #f6f6f6;
 }
+
+.article-header {
+  text-align: center;
+  margin-top: 22px;
+}
+
+.article-avatar {
+  width: 60px;
+  height: 60px;
+  margin-top: -22px;
+  margin-bottom: -8px;
+
+  background-color: silver;
+  border: solid gainsboro 2px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+}
+
+.article-body {
+  white-space: -moz-pre-wrap; /* Mozilla */
+  white-space: -pre-wrap;     /* Opera 4-6 */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  white-space: pre-wrap;      /* CSS3 */
+  word-wrap: break-word;      /* IE 5.5+ */
+
+  min-height: 120px;
+  margin: 0;
+  padding: 10px 15px;
+  font-size: 1.2em;
+
+  overflow: hidden;
+  color: #2f2f2f;
+}
+
+.article-footer {
+  padding: 12px 15px;
+  height: 20px;
+  line-height: 20px;
+}
+
+.article-username {
+  float: right;
+  font-size: 1.1em;
+}
+.article-date {
+  float:left;
+  color: gray;
+  font-size: 0.7em;
+}
+
+

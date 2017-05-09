@@ -1,0 +1,41 @@
+
+.editor-h {
+  color: aliceblue;
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: 3px 5px;
+}
+
+#editor {
+  padding: 0 30px;
+}
+
+#editor-textarea {
+  width: 100%;
+  height: 80px;
+  padding: 10px 15px 20px;
+  border: solid 1px lightgrey;
+  box-sizing: border-box;
+  outline: none;
+
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+}
+.editor-textarea-editing {
+  height: 240px!important;
+}
+
+#editor-submit-btn {
+  float: right;
+  padding: 3px 15px;
+  font-size: 1.1em;
+}
+#editor:after{
+  content: "."; 
+  display: block; 
+  height: 0; 
+  font-size:0;	
+  clear: both; 
+  visibility:hidden;
+}
