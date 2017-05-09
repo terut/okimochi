@@ -13,5 +13,7 @@ class BoardRepresentation < ApplicationRepresentation
     rel: "instances"
   )
 
-  delegate_properties :current_article
+  def current_article
+    Primitive::ArticleRepresentation.new(model.current_article)
+  end
 end

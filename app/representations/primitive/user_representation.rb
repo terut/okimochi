@@ -13,7 +13,7 @@ class Primitive::UserRepresentation < ApplicationRepresentation
   property(
     :username,
     example: "kirito",
-    pattern: /^\w{5}$/,
+    #pattern: /^\w{5}$/,
     type: String
   )
 
