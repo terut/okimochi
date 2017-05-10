@@ -29,12 +29,13 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "GET /article should return a correct response" do
-    get article_url, headers: { "Accept" => "application/json" }, as: :json
+    travel_to Time.zone.parse("#{article.published_on}T00:00:00Z") do
+      get article_url, headers: { "Accept" => "application/json" }, as: :json
 
-    assert_response :success
-    res = JSON.parse(response.body)
-    pp schema
-    assert JSON::Validator.validate(schema, res, fragment: "#/properties/articles", strict: true)
+      assert_response :success
+      res = JSON.parse(response.body)
+      assert JSON::Validator.validate(schema, res, fragment: "#/properties/articles", strict: true)
+    end
   end
 
   private
