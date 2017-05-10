@@ -14,6 +14,18 @@ class ActiveSupport::TestCase
   self.use_transactional_tests = false
 end
 
+module SignInHelper
+  include Kagishi
+
+  def sign_in_as(user)
+    get auth_magic_callback_path(token: issue_token(user.email))
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include SignInHelper
+end
+
 module DatabaseCleanUp
   def self.prepare
     # Add code that needs to be executed before test suite start
