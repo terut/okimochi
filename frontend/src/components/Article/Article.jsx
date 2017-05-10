@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import './Article.css';
 
 export default function Article({ article, user, sticky=false }) {
@@ -14,20 +15,22 @@ export default function Article({ article, user, sticky=false }) {
     }
   }
   return (
-    <div className={'article ' + (sticky ? 'article-sticky' : '')}>
-      {sticky && 
-          <div className='article-header article-mount'>
-            <img
-              className='article-avatar'
-              src={user.avatar}
-            />
-          </div>
-      }
-      <pre className='article-body article-mount'>{body}</pre>
-      <div className='article-footer article-mount'>
-        <div className='article-date'>{article.published_on}</div>
-        <div className='article-username'>{user.username}</div>
+    <article className={'article ' + (sticky ? 'article-sticky' : '')}>
+      <div className='article-mount'>
+        {sticky &&
+            <div className='article-avatar-space'>
+              <img
+                className='article-avatar'
+                src={user.avatar}
+              />
+            </div>
+        }
+        <pre className='article-body'>{body}</pre>
+        <div className='article-footer'>
+          <div className='article-date'>{moment(article.published_on).format('YYYY/M/D')}</div>
+          <div className='article-username'>{user.username}</div>
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

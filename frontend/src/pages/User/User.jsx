@@ -51,8 +51,8 @@ class User extends React.Component {
               user={user}
             />
           </section>
-          <section>
-            <div className='user-calendar'>
+          <section id='user-calendar'>
+            <div>
               <Calendar
                 date={this.props.date}
                 articles={user.articles}
