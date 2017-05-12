@@ -13,4 +13,6 @@ class AuthenticatedUserRepresentation < ApplicationRepresentation
     description: "Get authenticated user",
     path: "/user",
   )
+
+  delegate_properties :time_zone
 end
