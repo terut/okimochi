@@ -2,10 +2,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducers from './reducers/';
+import reducer from './redux/modules/reducer.js';
 
 
-const store = createStore(reducers);
+const store = createStore(reducer);
 
 import App from './pages/App/App.jsx';
 

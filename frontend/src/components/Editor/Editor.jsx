@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import { setArticle, getCurrentArticle } from '../../actions';
 
 import './Editor.css';
 

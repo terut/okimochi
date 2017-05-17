@@ -1,5 +1,10 @@
 import React from 'react';
-import { initBoard, postArticle, editArticle } from '../../actions';
+import {
+  load as loadArticle,
+  post as postArticle,
+  edit as editArticle
+} from '../../redux/modules/article.js';
+import { load as loadUsers } from '../../redux/modules/boards.js';
 
 import { Link } from 'react-router'
 import './Board.css';
@@ -9,7 +14,8 @@ import { connect } from 'react-redux';
 
 class Board extends React.Component {
   componentDidMount() {
-    initBoard(this.props.dispatch);
+    loadArticle(this.props.dispatch);
+    loadUsers(this.props.dispatch);
   }
 
   handleEditorSubmit(body) {
@@ -17,6 +23,12 @@ class Board extends React.Component {
       editArticle(this.props.article.id, body, this.props.dispatch);
     } else {
       postArticle(body, this.props.dispatch);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.loaded && this.props.article != nextProps.article) {
+      loadUsers(this.props.dispatch);
     }
   }
 
@@ -49,8 +61,9 @@ class Board extends React.Component {
 };
 
 export default connect(
-  state => {
-    return state.boards;
-  }
+  state => ({
+    article: state.article.article,
+    loaded: state.article.loaded,
+    users: state.boards.users
+  })
 )(Board);
-

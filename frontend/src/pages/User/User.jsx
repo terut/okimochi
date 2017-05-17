@@ -1,9 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-moment.locale('ja');
 import { browserHistory } from 'react-router'
-import { getUser, getActivity } from '../../APIClient.js';
-import { showUser, changeUserDate } from '../../actions/index.js';
+import { loadUser, changeMonth } from '../../redux/modules/users.js';
 
 import Profile from '../../components/Profile/Profile.jsx';
 import Calendar from '../../components/Calendar/Calendar.jsx';
@@ -15,34 +13,41 @@ import { connect } from 'react-redux';
 class User extends React.Component {
   constructor(props) {
     super(props);
+    loadUser(this.props.params.id, this.currentDate(), this.props.dispatch);
+  }
 
-    const date = moment(this.props.location.query.date, 'YYYY-MM-DD');
-    showUser(this.props.params.id, date, this.props.dispatch);
+  currentDate() {
+    return moment(this.props.location.query.date, 'YYYY-MM-DD') || moment();
   }
 
   handleChangeDate(date) {
     const newPath = `/users/${this.props.params.id}?date=${date.format('YYYY-MM-DD') || ''}`;
 
-    const shownDate = this.props.date ? this.props.date : moment();
-    if (!shownDate.isSame(date, 'month')) {
-      showUser(this.props.params.id, date, this.props.dispatch);
-    } else {
-      changeUserDate(date, this.props.dispatch);
+    if (!this.currentDate().isSame(date, 'month')) {
+      changeMonth(this.props.params.id, date, this.props.dispatch);
     }
     browserHistory.replace(newPath);
   }
 
-  componentWillUnmount() {
-    this.props.dispatch({
-      type: 'user/clear'
+  forcusedArticle() {
+    const user = this.props.user;
+    if (!user || !user.articles) {
+      return;
+    }
+    let result;
+    user.articles.forEach(article => {
+      if (this.currentDate().isSame(moment(article.published_on), 'date')) {
+        result = article;
+      }
     });
+    return result;
   }
 
   render() {
-    if (!this.props.user) {
+    const user = this.props.user;
+    if (!user) {
       return null;
     }
-    const user = this.props.user;
     return (
       <div id='user-container'>
         <aside id='user-aside'>
@@ -54,9 +59,11 @@ class User extends React.Component {
           <section id='user-calendar'>
             <div>
               <Calendar
-                date={this.props.date}
+                date={this.currentDate()}
                 articles={user.articles}
-                onChangeDate={date => { this.handleChangeDate(date); }}
+                onChangeDate={date => {
+                  this.handleChangeDate(date);
+                }}
               />
             </div>
           </section>
@@ -64,7 +71,7 @@ class User extends React.Component {
         <main id='user-main'>
           <div className='user-article'>
             <Article
-              article={this.props.article}
+              article={this.forcusedArticle()}
               user={user}
             />
           </div>
@@ -75,8 +82,8 @@ class User extends React.Component {
 }
 
 export default connect(
-  state => {
-    return state.user;
-  }
+  state => ({
+    user: state.users.user
+  })
 )(User);
 
